@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
+
+.mailbox {
+    width: 500px;
+    height: 300px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    /* border: 2px solid #333; */
+    position: relative;
+    /* overflow: hidden; */
+}
+
+.flap {
+    width: 0;
+    height: 0;
+    border-left: 250px solid transparent;
+    border-right: 250px solid transparent;
+    border-top: 150px solid #e3e3e3;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform-origin: top;
+    transform: translateX(-50%);
+    transition: transform 1s ease;
+}
+
+.heart {
+    position: absolute;
+    top: -25px; /* Adjust the position of the heart */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    transition: transform 5s ease, font-size 0.3s ease;
+}
+
+.heart:hover {
+    font-size: 2.2rem; /* Increase font size on hover */
+    cursor: pointer;
+}
+  
+.flap.clicked .heart {
+    font-size: 2.2rem; /* Maintain larger font size when flap is clicked */
+  }
+
+.flap.clicked .heart:hover {
+  font-size: 2.4rem; /* Further increase font size on hover when flap is clicked */
+}
+
+
+.content {
+    width: 75%;
+    height: 25%;
+    text-align: center;
+    font-family: 'Cedarville Cursive', cursive;
+    position: absolute;
+    top: -100%; /* Position content below flap initially */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+    opacity: 0; /* Hide content initially */
+    animation: slideIn 0.5s forwards; /* Add transition for position and opacity */
+}
+
+/* @keyframes openMailbox{
+    0% {
+        transform: rotateX(0deg);
+    }
+    100% {
+        transform: rotateX(180deg);
+    }
+} */
+
+.mailbox.open .flap{
+    transform: translateX(-50%) rotateX(180deg);
+}
+
+.mailbox.open .content{
+    animation: slideOut 0.5s forwards;
+}
+
+@keyframes slideIn {
+    from {
+      top: -50%; /* Start from above the mailbox */
+      opacity: 1; /* Hidden initially */
+    }
+    to {
+      top: 60%; /* Move content inside the mailbox */
+      opacity: 0; /* Fade in */
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      top: 0; /* Start from inside the mailbox */
+      opacity: 0; /* Visible initially */
+    }
+    to {
+      top: -38%; /* Move content above the mailbox */
+      opacity: 1; /* Fade out */
+    }
+  }

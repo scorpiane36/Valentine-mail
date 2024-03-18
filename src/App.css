@@ -1,0 +1,10 @@
+.app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to bottom right, #f6acac, #fa59a9); 
+    width: 100%;
+    /* background: url("./assets/rose_back.png" ), linear-gradient(to bottom right, #f6acac, #fa59a9); */
+    background-size: contain;
+}
